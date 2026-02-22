@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: Threat Intelligence API
+  description: Access real-time threat data and responses
+  version: 1.0.0
+
+paths:
+  /threats:
+    get:
+      summary: Retrieve all detected threats
+      responses:
+        '200':
+          description: List of all current threats
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    type:
+                      type: string
+                      example: "SQL Injection"
+                    risk_score:
+                      type: integer
+                      example: 25
+
+  /threats/{id}/response:
+    get:
+      summary: Get automated mitigation for a specific threat
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Recommended mitigation action
+          content:
+            application/json:
+              example:
+                id: 1
+                type: "SQL Injection"
+                mitigation: "Apply Web Application Firewall (WAF) rules."

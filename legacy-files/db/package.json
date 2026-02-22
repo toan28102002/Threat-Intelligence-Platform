@@ -1,0 +1,10 @@
+{
+  "name": "threat-intel-db",
+  "version": "1.0.0",
+  "description": "Database layer for threat intelligence system",
+  "main": "db.js",
+  "dependencies": {
+    "sqlite3": "^5.1.7",
+    "dotenv": "^16.3.1"
+  }
+} 
